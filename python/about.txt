@@ -1,0 +1,10 @@
+To use the Python executable from the container use
+
+cd bin
+
+docker run -it -v (path to file):/data python:2.7 python (file)
+
+python <python file to run>
+
+Always virtually maps location of __.py file to /data so that it exists in the victual container running docker.
+

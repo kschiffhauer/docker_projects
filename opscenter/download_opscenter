@@ -1,0 +1,1 @@
+wget --user=jega@valtanix.net --password=Simple123 http://downloads.datastax.com/enterprise/opscenter-5.2.4.tar.gz

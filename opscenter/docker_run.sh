@@ -1,0 +1,1 @@
+docker run -d --name opscenter opscenter:5.2.4
