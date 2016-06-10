@@ -1,0 +1,1 @@
+Directory must contain dse-4.8.5-bin.tar.gz to operate using Docker
