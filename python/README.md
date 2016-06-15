@@ -1,3 +1,3 @@
-INSERTED! is the README.md for python (2.7).  
+is the README.md for python (2.7).  
 
 Adding this comment to test git.
