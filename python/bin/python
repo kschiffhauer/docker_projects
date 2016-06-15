@@ -1,2 +1,2 @@
 #!/bin/bash
-docker run -it -v /Users/kaitlynschiffhauer/projects/docker/python/:/data python:2.7 python /data/"$@"
+docker run -it -v /Users/kaitlynschiffhauer/projects/docker_projects/python/:/data python:2.7 python /data/"$@"

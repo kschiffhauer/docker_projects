@@ -2,7 +2,7 @@ import sys
 
 
 def main():
-    print ('Hellow World!')
+    print ('Hello World!')
     print ('This works!')
 
 
