@@ -1,0 +1,68 @@
+Building table in DSE-4.8.5 on Docker OS X Yosemite.
+
+Run Bash session in Docker conainter running DSE.
+
+	docker exec -it CONTAINER_ID
+
+Run cqlsh.
+	
+	cqlsh
+
+/bin/bash^M unable to be read error with unix formatting
+	
+	apt-get update
+	apt-get install vim
+	vi /path_to_cqlsh/cqlsh
+	:set fileformate = unix
+	:wq!
+
+run cqlsh
+	
+	cqlsh
+
+Create Customer 360 keyspace and switch to use this keyspace.  First see what the name of the dataceter is.
+
+	root:/usr/local/bin# nodetool status
+
+Create c360 keyspace and switch to use it.
+
+	CREATE KEYSPACE IF NOT EXISTS c360 WITH replication = {'class':'NetworkTopologyStrategy', 'Solr':'1'};
+
+	USE c360;
+
+Create test table
+
+	CREATE TABLE person(last_name varchar PRIMARY KEY, first_name varchar, job_title varchar, zip_code int);
+
+Insert data.
+
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Schiffhauer', 'Kaitlyn', 'Intern', 94022);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Smith', 'Jane', 'Test Engineer', 94023);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Doe', 'John', 'Software Engineer', 94040);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Bosworth', 'Billy', 'CEO', 90120);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Sutton', 'Jodi', 'VP Sales', 94022);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Kim', 'Caroline', 'Intern', 94032);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Pierre-Davis', 'Jordan', 'Intern', 94043);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Chapa', 'Elisa', 'HR', 94050);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Mahony', 'Aidan', 'Intern', 94043);
+	 INSERT INTO person (last_name, first_name, job_title, zip_code) VALUES ('Gleit', 'Michele', 'Intern', 94041);
+
+Start core on Solr.
+
+	dsetool create_core c360.person generateResources=true reindex=true
+
+Import data from csv file.  Copy file to docker container.
+
+	docker cp data.csv CONTAINER_NAME:/file_path/data.csv
+
+Open cqlsh in container and copy data to keyspace.table_name
+
+	COPY c360.person(last_name, first_name, job_title, zip_code) from 'c360_person_data.csv' WITH DELIMITER=',' AND HEADER=true;
+
+
+
+
+
+
+
+
