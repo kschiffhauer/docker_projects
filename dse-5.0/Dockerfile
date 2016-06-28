@@ -18,7 +18,7 @@ RUN chmod +x /bin/gosu
 # tarball can be download into the folder where Dockerfile is
 # wget --user=$USER --password=$PASS http://downloads.datastax.com/enterprise/dse-4.8.0-bin.tar.gz
 # you may want to replace dse-4.8.0-bin.tar.gz with the corresponding downloaded package name
-ADD dse-4.8.5-bin.tar.gz /opt
+ADD dse.tar.gz /opt
 # keep data here. Optionally bind directly to a volume on the server. I.E.:
 #VOLUME /data /data
 VOLUME /data
